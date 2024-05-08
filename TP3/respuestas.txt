@@ -1,0 +1,48 @@
+tareas_SIN_hilos
+
+- ¿Qué se puede notar con respecto al tiempo de ejecución? ¿Es predecible?
+    El tiempo de ejecución varía, muy poco, pero varía. La tarea que más variacion tuvo fue la numero 1 que que depende del momento actual del CPU y varios factores.
+
+- Nombrar un proceso o función de la vida real que pueden ser considerados procesos de “máxima
+velocidad posible” que dependen casi exclusivamente de la velocidad de la máquina que los ejecuta (ej.
+Ordenar una lista)
+    Podría ser abrir un programa o serie de programas. Abrirán tan rapido como lo sea el CPU.
+
+- Nombrar un proceso o función de la vida real que pueden ser considerados procesos de “velocidad de
+respuesta no dependiente de la velocidad de procesamiento” o que sea de naturaleza impredecible o
+externa (ej. Leer un archivo externo)
+    Podría ser visitar un sitio web que no depende de la velocidad del CPU, sino de la velocidad de conexión y otros factores como el tiempo de respuesta del servidor.
+
+tarea_CON_hilos
+
+- ¿Qué se puede notar con respecto al tiempo de ejecución? ¿Se mejoró el tiempo de respuesta con
+respecto al mismo programa sin hilos?
+    Se mejoró sustancialmente el tiempo de respuesta respecto al mismo programa sin hilos, ya que actualmente el tiempo en completar las tres tareas, al iniciarse al mismo tiempo, es igual (o parecido) al tiempo de ejecución de la última tarea en terminar de ejecutarse.
+
+- ¿Completan las funciones su ejecución en el orden establecido?
+    La funciones se completan según el orden de finalización y no según el orden de ejecución.
+
+- Nombrar un escenario real donde el multi-hilado puede mejorar considerablemente el tiempo de
+respuesta de un sistema (ej. Carga de una página WEB en un navegador)
+    Abrir varios programas al mismo tiempo, donde no requiere que el primero en ser ejecutado sea el primero que se abra.
+
+Condición de carrera (Race Condition)
+
+- ¿Qué se puede notar con respecto al tiempo de ejecución?
+    El tiempo de ejecución de sumador-restador.py y de sumador-restador_CON_race.py es instantáneo.
+- ¿Qué sucede con el valor final del acumulador?
+    El valor final de acumulador en sumador-restador.py siempre es 0, pero en el sumador-restador_CON_race varía entre 5000 y -5000.
+- ¿Por qué sucede esto?
+    Sucede porque no están sincronizados correctamente y alguno de los 2 puede ejecutarse más veces que el anterior.
+TIP: cambios de contexto en medio de acceso a zona crítica y actualización de valor de variable
+
+- ¿Cómo se puede corregir esta condición de carrera sin dejar de utilizar hilos?
+    Se puede corregir bloqueando el acceso al recurso para que ningún otro hilo pueda acceder al mismo tiempo a dicho recurso.
+
+sumador-restador_SIN_race
+
+- ¿Qué sucede con el valor final del acumulador?
+    Vuelve a su valor por defecto porque las funciones que lo utilizan suman y restan la misma cantidad.
+
+- ¿Qué se puede notar con respecto al tiempo de ejecución?
+    El tiempo de ejecución es también instantáneo.
