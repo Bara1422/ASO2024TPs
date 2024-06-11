@@ -10,6 +10,12 @@ while [[ $intentos -gt 0 ]]; do
     echo "Ingresá un número entre 1 y 100"
     read numeroIngresado
     
+    while [[ $numeroIngresado -lt 1 || $numeroIngresado -gt 100 ]];
+        do
+        echo "Por favor ingresá un número válido entre 1 y 100"
+        read numeroIngresado
+    done
+
     if [[ $numeroIngresado -gt $numeroAleatorio ]];
         then
             ((intentos -= 1))
@@ -36,4 +42,4 @@ while [[ $intentos -gt 0 ]]; do
             echo "--------------------------------------------------------"
             echo "Te quedaste sin intentos, el numero era $numeroAleatorio"
     fi
-done
+done    
